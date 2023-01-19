@@ -1,0 +1,80 @@
+  /* header */
+  header { position: fixed; display: flex; justify-content: space-between; width: 100%; height: 70px; box-shadow: 0 0 10px #eee; }
+  header.active { background: #fff; box-shadow: 0 0 10px #eee;}
+  header h1 { width: 210px; border: 1px solid #000;}
+  .nav_list { display: flex; align-items: center; height: 100%; }
+  .nav_list li { padding: 10px; margin-left: 10px; background: #fff; }
+  .nav_list li:first-child { margin-left: 0; }
+  .nav_list li a { font-size: 18px; color: #000; text-decoration: none; }
+  
+  /* section */
+  .section { display: flex; justify-content: center; align-items: center; flex-direction: column; width: 100%; height: 100vh; }
+  .sec-01 { background: #f698e3; }
+  .sec-02 { background: #c7dc09; }
+  .sec-03 { background: #f2edff; }
+  .sec-04 { background: #ffe5ba }
+  
+  .section h2 {
+    font-size: 38px;
+    font-weight: 700;
+  }
+  .toggle {
+    padding: 10px;
+    border: 1px solid #000;
+    background: #fff;
+  }
+  .toggle .toggle_title {
+    font-size: 28px;
+    font-weight: 500;
+  }
+  .toggle .chang_text {
+    color: #fff;
+    background: #00f;
+  }
+  .toggle .chang_text.active {
+    background: #f00;
+  }
+  .toggle .toggle_btn {
+    display: block;
+  }
+
+  .sec-02 {}
+  .sec-02 .total_text { text-align: center; }
+  .sec-02 .total_text .total { font-size: 26px; }
+  .sec-02 .chk_text { text-align: center; }
+  .sec-02 .chk_text .chk { font-size: 26px; }
+  .sec-02 .todo_wrapper {
+    margin-top: 20px;
+    padding: 20px;
+    min-width: 380px;
+    min-height: 220px;
+    text-align: center;
+    line-height: 218px;
+    border: 1px solid #000;
+    background: rgb(232, 232, 232);
+  }
+  .sec-02 .todo_wrapper .todo li {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    line-height: 32px;
+  }
+  .sec-02 .todo_wrapper .todo li .todo_text {
+    color: #000;
+    font-size: 30px;
+    text-decoration-line: none;
+    transition: all .25s ease;
+  }
+  .sec-02 .todo_wrapper .todo li .todo_text.checked {
+    text-decoration-line: line-through;
+    color: #f00;
+  }
+  .sec-02 .todo_wrapper .todo li .delete_btn {
+    display: none;
+  }
+  .sec-02 .todo_wrapper .todo li .delete_btn.checked {
+    display: block;
+  }
+  .sec-02 .todo_wrapper .empty {
+    display: block;
+  }
