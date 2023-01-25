@@ -7,68 +7,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
   <link rel="stylesheet" href="assets/css/core.css">
-  <title>Document</title>
+  <title>YANGSEE, TODOLIST</title>
 </head>
 
 <body>
-  <div id="wrap">
-    <header>
-      <h1>로고자리</h1>
-      <nav>
-        <ul class="nav_list">
-          <li><a href="#nav01">nav01</a></li>
-          <li><a href="#nav02">nav02</a></li>
-          <li><a href="#nav03">nav03</a></li>
-          <li><a href="#nav04">nav04</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <section class="section sec-01">
-        <h2>여기는 Section 1 클로저를 활용한 toggle 입니다.</h2>
-        <div class="toggle">
-          <p class="toggle_title">최첨단 토글 시스템</p>
-          <span class="chang_text">컬러 : {blue} </span>
-          <button class="toggle_btn">토글 버튼이라구 ! 톡을 !</button>
-        </div>
-      </section>
+  <main>
+    <div class="container">
+      <div class="todo_wrapper">
+        <h2>양씨의 체크리스트</h2>
 
-      <section class="section sec-02">
-        <h2>여기는 Section 2 todolist 입니다.</h2>
-        <div>
-          <p class="total_text">총 리스트 갯수 :
-            <span class="total">0</span>개
-          </p>
-          <p class="chk_text">선택한 리스트 갯수 :
-            <span class="chk">0</span>개
-          </p>
-          <button class="all_checked" disabled>모두 Checked</button>
-          <button class="all_delete" disabled>checked된 list 모두 삭제</button>
-        </div>
+        <div class="todo_inner">
 
-        <form id="form_todo" class="form_group">
-          <input type="text" class="todo_input" autofocus required />
-          <button class="todo_btn">➕ 추가 할거야 ➕</button>
-        </form>
+          <div class="control">
+            <div class="count_wrapper">
+              <p class="count_text">총 리스트 갯수 :
+                <span class="count">0</span>개
+              </p>
+              <p class="count_text">선택한 리스트 갯수 :
+                <span class="count">0</span>개
+              </p>
+            </div>
 
-        <div class="todo_wrapper">
-          <ul class="todo"></ul>
-          <div class="empty">
-            체크 list를 작성해주세요.
+            <form id="form_todo" class="form_group">            
+              <input type="text" class="todo_input" autofocus required />
+              <button class="todo_add">추가</button>
+            </form>
           </div>
+
+          <div class="todo_list_wrapper">
+            <div class="todo_selete_group">
+              <button class="all_checked" disabled>모두 선택</button>
+              <button class="all_delete" disabled>선택된 리스트 삭제</button>
+            </div>
+            <ul class="todo">
+              <!-- <li class="todo_list checked">
+                <label for="">
+                  <input type="checkbox" name="" id="" />
+                  유산소 운동하기.
+                </label>
+                <button class="delete_btn">삭제</button>
+              </li>
+              <li class="todo_list">
+                <label for="">
+                  <input type="checkbox" name="" id="" />
+                  코딩 테스트 하기.
+                </label>
+                <button class="delete_btn">삭제</button>
+              </li>
+              <li class="todo_list">
+                <label for="">
+                  <input type="checkbox" name="" id="" />
+                  CS 공부하기.
+                </label>
+                <button class="delete_btn">삭제</button>
+              </li> -->
+            </ul>
+            <div class="todo_empty">나의 체크리스트를 추가해주세요.</div>
+          </div>
+
         </div>
-      </section>
-
-      <section class="section sec-03">
-        <h2>여기는 Section 3 끝말잇기 게임 입니다.</h2>
-      </section>
-
-      <section class="section sec-04">
-        <h2>여기는 Section 4 입니다.</h2>
-      </section>
-    </main>
-    <footer></footer>
-  </div>
+      </div>
+    </div>
+  </main>
 
   <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js" integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA=" crossorigin="anonymous"></script>
   <script src="assets/js/todolist.js"></script>

@@ -1,44 +1,42 @@
-  /* header */
-  header { position: fixed; display: flex; justify-content: space-between; width: 100%; height: 70px; box-shadow: 0 0 10px #eee; }
-  header.active { background: #fff; box-shadow: 0 0 10px #eee;}
-  header h1 { width: 210px; border: 1px solid #000;}
-  .nav_list { display: flex; align-items: center; height: 100%; }
-  .nav_list li { padding: 10px; margin-left: 10px; background: #fff; }
-  .nav_list li:first-child { margin-left: 0; }
-  .nav_list li a { font-size: 18px; color: #000; text-decoration: none; }
+  body { font-size: 62.5%; font-weight: 400; line-height: 1.5; }
   
-  /* section */
-  .section { display: flex; justify-content: center; align-items: center; flex-direction: column; width: 100%; height: 100vh; }
-  .sec-01 { background: #f698e3; }
-  .sec-02 { background: #c7dc09; }
-  .sec-03 { background: #f2edff; }
-  .sec-04 { background: #ffe5ba }
-  
-  .section h2 {
-    font-size: 38px;
-    font-weight: 700;
-  }
-  .toggle {
-    padding: 10px;
-    border: 1px solid #000;
-    background: #fff;
-  }
-  .toggle .toggle_title {
-    font-size: 28px;
-    font-weight: 500;
-  }
-  .toggle .chang_text {
-    color: #fff;
-    background: #00f;
-  }
-  .toggle .chang_text.active {
-    background: #f00;
-  }
-  .toggle .toggle_btn {
-    display: block;
-  }
+  .container { max-width: 80rem; margin: 0 auto; }
 
-  .sec-02 {}
+  input { padding: 0; margin: 0; }
+  input:focus { outline: none; }
+  button { padding: 0 1rem; min-width: 4rem; height: 2.8rem; line-height: 2.8rem; border: none; cursor: pointer; }
+
+  .todo_wrapper {  display: flex; justify-content: center; align-items: center; flex-direction: column; width: 100%; height: 100vh; }
+  .todo_wrapper h2 { font-size: 3.8rem; font-weight: 700; }
+  .todo_wrapper .todo_inner { margin-top: 2rem; display: flex; flex-direction: column; align-items: center; }
+  
+  .todo_inner .control { }
+  /* 갯수 COUNT */
+  .todo_inner .control .count_wrapper { display: flex; justify-content: center; margin-bottom: 1rem; }
+  .todo_inner .control .count_wrapper .count_text { padding: 0.4rem; border: 1px solid #e0e0e0; font-size: 1rem; font-weight: 300; }
+  .todo_inner .control .count_wrapper .count_text:first-child { margin-right: 0.5rem; }
+  .todo_inner .control .count_wrapper .count_text .count { font-size: 1.4rem; font-weight: 400; color: #a1a1a1; }
+  /* INPUT입력창 */
+  .todo_inner .control .form_group { font-size: 0; box-shadow: 0rem 0rem 4rem 0.1rem #f1f1f1; }
+  .todo_inner .control .form_group > * { display: inline-block; vertical-align: middle; }
+  .todo_inner .control .form_group .todo_input { padding: 0 1.2rem; min-width: 20rem; height: 2.6rem; line-height: 2.4rem; border: 1px solid #a1a1a1; }
+  .todo_inner .control .form_group .todo_add { color: #fff; background: #a1a1a1; font-size: 1rem; }
+
+  /* 모두선택, 선택삭제, TODOLIST WRAPPING */
+  .todo_inner .todo_list_wrapper { margin-top: 1rem; min-width: 26.5rem; height: 30rem; box-shadow: 0rem 1rem 2rem 1rem #e0e0e0; }
+  /* 모두선택, 선택삭제 */
+  .todo_inner .todo_list_wrapper .todo_selete_group { padding: .5rem; display: flex; justify-content: space-between; border-bottom: 1px solid #e0e0e0; }
+  .todo_inner .todo_list_wrapper .todo_selete_group > button { transition: all .25s ease-in; }
+  .todo_inner .todo_list_wrapper .todo_selete_group .all_checked { background: #bbb; color: #fff; }
+  .todo_inner .todo_list_wrapper .todo_selete_group .all_checked:hover { background: #9f9f9f; color: #fff; }
+  .todo_inner .todo_list_wrapper .todo_selete_group .all_delete:hover { background: #bbb; color: #fff; }
+  /* TODOLIST */
+  .todo_inner .todo_list_wrapper .todo { padding: .5rem; }
+  .todo_inner .todo_list_wrapper .todo .list { display: flex; justify-content: space-between; align-items: center; }
+  /* .todo_inner .todo_list_wrapper .todo .list .text {  } */
+  .todo_inner .todo_list_wrapper .todo_empty { padding: 12.3rem 0; color: #bbb; font-size: 1rem; text-align: center; }
+  
+  /* .sec-02 {}
   .sec-02 .total_text { text-align: center; }
   .sec-02 .total_text .total { font-size: 26px; }
   .sec-02 .chk_text { text-align: center; }
@@ -77,4 +75,4 @@
   }
   .sec-02 .todo_wrapper .empty {
     display: block;
-  }
+  } */
