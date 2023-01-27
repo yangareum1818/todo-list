@@ -1,12 +1,12 @@
-  body { font-size: 62.5%; font-weight: 400; line-height: 1.5; }
-  
+* { line-height: 1.5; }
+  body { font-size: 62.5%; font-weight: 400; font-family: sans-serif, Arial, '돋움'; line-height: 1.5; }
   .container { max-width: 80rem; margin: 0 auto; }
 
   input { padding: 0; margin: 0; }
   input:focus { outline: none; }
-  button { padding: 0 1rem; min-width: 4rem; height: 2.8rem; line-height: 2.8rem; border: none; cursor: pointer; }
+  button { padding: 0 1rem; min-width: 4rem; height: 2.8rem; line-height: 2.8rem; color: #aaa; border: none; cursor: pointer; }
 
-  .todo_wrapper {  display: flex; justify-content: center; align-items: center; flex-direction: column; width: 100%; height: 100vh; }
+  .todo_wrapper {  display: flex; justify-content: center; align-items: center; flex-direction: column; width: 100%; min-height: 100vh; }
   .todo_wrapper h2 { font-size: 3.8rem; font-weight: 700; }
   .todo_wrapper .todo_inner { margin-top: 2rem; display: flex; flex-direction: column; align-items: center; }
   
@@ -24,17 +24,22 @@
 
   /* 모두선택, 선택삭제, TODOLIST WRAPPING */
   .todo_inner .todo_list_wrapper { margin-top: 1rem; min-width: 26.5rem; height: 30rem; box-shadow: 0rem 1rem 2rem 1rem #e0e0e0; }
-  /* 모두선택, 선택삭제 */
+  /* 모두선택(all_checked), 선택삭제 */
   .todo_inner .todo_list_wrapper .todo_selete_group { padding: .5rem; display: flex; justify-content: space-between; border-bottom: 1px solid #e0e0e0; }
   .todo_inner .todo_list_wrapper .todo_selete_group > button { transition: all .25s ease-in; }
   .todo_inner .todo_list_wrapper .todo_selete_group .all_checked { background: #bbb; color: #fff; }
   .todo_inner .todo_list_wrapper .todo_selete_group .all_checked:hover { background: #9f9f9f; color: #fff; }
   .todo_inner .todo_list_wrapper .todo_selete_group .all_delete:hover { background: #bbb; color: #fff; }
   /* TODOLIST */
-  .todo_inner .todo_list_wrapper .todo { padding: .5rem; }
-  .todo_inner .todo_list_wrapper .todo .list { display: flex; justify-content: space-between; align-items: center; }
-  /* .todo_inner .todo_list_wrapper .todo .list .text {  } */
-  .todo_inner .todo_list_wrapper .todo_empty { padding: 12.3rem 0; color: #bbb; font-size: 1rem; text-align: center; }
+  .todo_inner .todo_list_wrapper .todo_list { padding: 0.5rem; }
+  .todo_inner .todo_list_wrapper .todo { }
+  .todo_inner .todo_list_wrapper .todo .list { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; height: 2.8rem; }
+  .todo_inner .todo_list_wrapper .todo .list label { width: calc(100% - 4.5rem); font-size: 1.2rem; word-break: break-all; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; cursor: pointer; }
+  .todo_inner .todo_list_wrapper .todo .list label input { margin-right: 1rem; }
+  .todo_inner .todo_list_wrapper .todo .list.checked label { color: #f00; text-decoration: line-through; }
+  .todo_inner .todo_list_wrapper .todo .list.checked .delete_btn { display: block; }
+  .todo_inner .todo_list_wrapper .todo .list .delete_btn { display: none; }
+  .todo_inner .todo_list_wrapper .todo_empty { display: block; padding: 11.8rem 0; color: #bbb; font-size: 1rem; text-align: center; }
   
   /* .sec-02 {}
   .sec-02 .total_text { text-align: center; }

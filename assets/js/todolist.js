@@ -87,39 +87,34 @@ const deleteToDo = function (e) {
   spaceToDo = todoOneDelete;
 
   todoli.remove();
+  saveToDo();
+  totalCount();
 };
 
 // checked가 되었을 때, checked상태 로컬스토리지에 반영.
 const todoChecked = function (e) {
-  const input = e.target;
-  const li = input.parentElement;
-  const text = li.querySelector(".todo_text");
-  const del = li.querySelector(".delete_btn");
+  const todoinput = e.target;
+  const todoli = todoinput.parentElement.parentElement;
 
-  spaceToDo.map((todo) => {
+  spaceToDo.filter((todo) => {
     // li의 id와 input의 id를 비교해 로컬스토리지에 checked를 true, false 반영시켜주기.
-    if (todo.id === parseInt(input.id)) todo.checked = !todo.checked;
+    if (todo.id === parseInt(todoli.id)) todo.checked = !todo.checked;
 
-    // if (input.checked === true) {
-    //   text.classList.add(CHECKED);
-    //   del.classList.add(CHECKED);
-    // }
-    // if (input.checked === false) {
-    //   text.classList.remove(CHECKED);
-    //   del.classList.remove(CHECKED);
-    // }
+    todoinput.checked === true
+      ? todoli.classList.add(CHECKED)
+      : todoli.classList.remove(CHECKED);
   });
 
   saveToDo();
-  del.addEventListener("click", deleteToDo);
 };
 
 // 총 list 갯수
 const totalCount = function () {
   const todoTotal = document.querySelector(".total");
-  todoTotal.innerHTML = `${spaceToDo.length}`;
+  const count = todoTotal.querySelector(".count");
+  count.innerHTML = `${spaceToDo.length}`;
 
-  todoTotal.append();
+  count.append();
 };
 
 // list 갯수가 0일 경우
@@ -140,37 +135,33 @@ const listZero = function () {
 // 전체적인 list생성이 화면에 보여지는 부분.
 const drawingTodo = function (newToDo) {
   const todoList = document.createElement("li");
+  const todoLabel = document.createElement("label");
   const todoCheckBox = document.createElement("input");
-  const todoText = document.createElement("p");
   const deleteBtn = document.createElement("button");
 
   const { id, text, checked } = newToDo;
 
   todoList.setAttribute("id", id);
-  todoCheckBox.setAttribute("id", id);
   todoCheckBox.setAttribute("type", "checkbox");
-  todoCheckBox.setAttribute("checked", checked);
-  todoText.textContent = text;
-  deleteBtn.textContent = "이것만 삭제할거야 버튼";
+  todoCheckBox.checked = checked;
+  todoLabel.textContent = text;
+  deleteBtn.textContent = "삭제";
 
   todoList.classList.add("list");
+  deleteBtn.classList.add("delete_btn");
 
   todoListUI.prepend(todoList);
-  todoList.appendChild(todoCheckBox);
-  todoList.appendChild(todoText);
+  todoList.appendChild(todoLabel);
   todoList.appendChild(deleteBtn);
+  todoLabel.prepend(todoCheckBox);
 
-  // if (checked === true) {
-  //   todoText.classList.add(CHECKED);
-  //   deleteBtn.classList.add(CHECKED);
-  // }
-  // if (checked === false) {
-  //   todoText.classList.remove(CHECKED);
-  //   deleteBtn.classList.remove(CHECKED);
-  // }
+  todoCheckBox.checked === true
+    ? todoList.classList.add(CHECKED)
+    : todoList.classList.remove(CHECKED);
 
   listZero();
   totalCount();
+  deleteBtn.addEventListener("click", deleteToDo);
 };
 
 // list 내부를 관리하는 몸통
@@ -191,7 +182,7 @@ const todoSubmitHandler = function (e) {
   drawingTodo(newToDoObj);
 };
 todoForm.addEventListener("submit", todoSubmitHandler);
-todoListUI.addEventListener("click", todoChecked);
+todoListUI.addEventListener("change", todoChecked);
 
 // 로컬스토리지 안에 있는 TODOLIST_KEY를 읽어온다. (parse : 문자열을 오브젝트로 변환시킨다.)
 const getToDo = JSON.parse(localStorage.getItem(TODOLIST_KEY));
