@@ -1,83 +1,46 @@
-* { line-height: 1.5; }
+* { line-height: 1.5; box-sizing: border-box; }
   body { font-size: 62.5%; font-weight: 400; font-family: sans-serif, Arial, '돋움'; line-height: 1.5; }
+  *:disabled { background: lightgrey; color: linen; opacity: 1; cursor: not-allowed; }
   .container { max-width: 80rem; margin: 0 auto; }
 
   input { padding: 0; margin: 0; }
   input:focus { outline: none; }
-  button { padding: 0 1rem; min-width: 4rem; height: 2.8rem; line-height: 2.8rem; color: #aaa; border: none; cursor: pointer; }
+  button { padding: 0 1rem; min-width: 4rem; height: 2.8rem; line-height: 2.8rem; background-color: dimgrey; color: linen; border: none; cursor: pointer; transition: all .25s ease-in; }
 
   .todo_wrapper {  display: flex; justify-content: center; align-items: center; flex-direction: column; width: 100%; min-height: 100vh; }
   .todo_wrapper h2 { font-size: 3.8rem; font-weight: 700; }
-  .todo_wrapper .todo_inner { margin-top: 2rem; display: flex; flex-direction: column; align-items: center; }
+  .todo_wrapper .todo_inner { margin-top: 1rem; display: flex; flex-direction: column; align-items: center; }
   
   .todo_inner .control { }
   /* 갯수 COUNT */
   .todo_inner .control .count_wrapper { display: flex; justify-content: center; margin-bottom: 1rem; }
-  .todo_inner .control .count_wrapper .count_text { padding: 0.4rem; border: 1px solid #e0e0e0; font-size: 1rem; font-weight: 300; }
+  .todo_inner .control .count_wrapper .count_text { padding: 0.4rem; font-size: 1rem; font-weight: 300; }
   .todo_inner .control .count_wrapper .count_text:first-child { margin-right: 0.5rem; }
   .todo_inner .control .count_wrapper .count_text .count { font-size: 1.4rem; font-weight: 400; color: #a1a1a1; }
   /* INPUT입력창 */
   .todo_inner .control .form_group { font-size: 0; box-shadow: 0rem 0rem 4rem 0.1rem #f1f1f1; }
   .todo_inner .control .form_group > * { display: inline-block; vertical-align: middle; }
   .todo_inner .control .form_group .todo_input { padding: 0 1.2rem; min-width: 20rem; height: 2.6rem; line-height: 2.4rem; border: 1px solid #a1a1a1; }
-  .todo_inner .control .form_group .todo_add { color: #fff; background: #a1a1a1; font-size: 1rem; }
+  .todo_inner .control .form_group .todo_add { height: 2.8rem; color: #fff; background: #a1a1a1; font-size: 1rem; border: none; }
+
 
   /* 모두선택, 선택삭제, TODOLIST WRAPPING */
   .todo_inner .todo_list_wrapper { margin-top: 1rem; min-width: 26.5rem; height: 30rem; box-shadow: 0rem 1rem 2rem 1rem #e0e0e0; }
+
   /* 모두선택(all_checked), 선택삭제 */
-  .todo_inner .todo_list_wrapper .todo_selete_group { padding: .5rem; display: flex; justify-content: space-between; border-bottom: 1px solid #e0e0e0; }
-  .todo_inner .todo_list_wrapper .todo_selete_group > button { transition: all .25s ease-in; }
-  .todo_inner .todo_list_wrapper .todo_selete_group .all_checked { background: #bbb; color: #fff; }
+  .todo_inner .todo_list_wrapper .todo_selete_group { padding: .5rem; display: flex; justify-content: space-between; border-bottom: 1px solid #a1a1a1; }
   .todo_inner .todo_list_wrapper .todo_selete_group .all_checked:hover { background: #9f9f9f; color: #fff; }
   .todo_inner .todo_list_wrapper .todo_selete_group .all_delete:hover { background: #bbb; color: #fff; }
+  
   /* TODOLIST */
-  .todo_inner .todo_list_wrapper .todo_list { padding: 0.5rem; }
-  .todo_inner .todo_list_wrapper .todo { }
-  .todo_inner .todo_list_wrapper .todo .list { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; height: 2.8rem; }
-  .todo_inner .todo_list_wrapper .todo .list label { width: calc(100% - 4.5rem); font-size: 1.2rem; word-break: break-all; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; cursor: pointer; }
-  .todo_inner .todo_list_wrapper .todo .list label input { margin-right: 1rem; }
+  .todo_inner .todo_list_wrapper .todo_list { padding: 0.5rem; width: 100%; height: 26rem; overflow-y: scroll; }
+  .todo_inner .todo_list_wrapper .todo {  }
+  .todo_inner .todo_list_wrapper .todo .list { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; padding-left: 0.5rem; height: 2.8rem; border: 1px solid #a1a1a1; }
+  .todo_inner .todo_list_wrapper .todo .list label { width: calc(100% - 4.5rem); color: #696969; font-size: 1.2rem; word-break: break-all; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; cursor: pointer; }
+  .todo_inner .todo_list_wrapper .todo .list label input { margin-right: .5rem; }
   .todo_inner .todo_list_wrapper .todo .list.checked label { color: #f00; text-decoration: line-through; }
   .todo_inner .todo_list_wrapper .todo .list.checked .delete_btn { display: block; }
   .todo_inner .todo_list_wrapper .todo .list .delete_btn { display: none; }
+  /* LIST갯수가 0되었을 때 효과 */
   .todo_inner .todo_list_wrapper .todo_empty { display: block; padding: 11.8rem 0; color: #bbb; font-size: 1rem; text-align: center; }
-  
-  /* .sec-02 {}
-  .sec-02 .total_text { text-align: center; }
-  .sec-02 .total_text .total { font-size: 26px; }
-  .sec-02 .chk_text { text-align: center; }
-  .sec-02 .chk_text .chk { font-size: 26px; }
-  .sec-02 .todo_wrapper {
-    margin-top: 20px;
-    padding: 20px;
-    min-width: 380px;
-    min-height: 220px;
-    text-align: center;
-    line-height: 218px;
-    border: 1px solid #000;
-    background: rgb(232, 232, 232);
-  }
-  .sec-02 .todo_wrapper .todo li {
-    display: flex;
-    align-items: center;
-    height: 32px;
-    line-height: 32px;
-  }
-  .sec-02 .todo_wrapper .todo li .todo_text {
-    color: #000;
-    font-size: 30px;
-    text-decoration-line: none;
-    transition: all .25s ease;
-  }
-  .sec-02 .todo_wrapper .todo li .todo_text.checked {
-    text-decoration-line: line-through;
-    color: #f00;
-  }
-  .sec-02 .todo_wrapper .todo li .delete_btn {
-    display: none;
-  }
-  .sec-02 .todo_wrapper .todo li .delete_btn.checked {
-    display: block;
-  }
-  .sec-02 .todo_wrapper .empty {
-    display: block;
-  } */
+  .todo_inner .todo_list_wrapper .todo_empty.show { display: none; }
