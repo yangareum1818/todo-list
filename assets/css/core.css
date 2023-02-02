@@ -28,8 +28,10 @@
   .todo_inner .todo_list_wrapper { margin-top: 1rem; min-width: 26.5rem; height: 30rem; box-shadow: 0rem 1rem 2rem 1rem #e0e0e0; }
 
   /* 모두선택(all_checked), 선택삭제 */
-  .todo_inner .todo_list_wrapper .todo_selete_group { padding: .5rem; display: flex; justify-content: space-between; border-bottom: 1px solid #a1a1a1; }
-  .todo_inner .todo_list_wrapper .todo_selete_group .all_checked:hover { background: #9f9f9f; color: #fff; }
+  .todo_inner .todo_list_wrapper .todo_selete_group { padding: .5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #a1a1a1; }
+  .todo_inner .todo_list_wrapper .todo_selete_group .all_checked { color: dimgrey; font-size: 1rem; }
+  .todo_inner .todo_list_wrapper .todo_selete_group .all_checked .checkbox_all { color: #a1a1a1; }
+  .todo_inner .todo_list_wrapper .todo_selete_group .all_checked .checkbox_all:disabled { color: #ccc; }
   .todo_inner .todo_list_wrapper .todo_selete_group .all_delete:hover { background: #bbb; color: #fff; }
   
   /* TODOLIST */
