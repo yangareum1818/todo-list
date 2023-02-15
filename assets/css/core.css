@@ -23,7 +23,7 @@
   .todo_inner .control .form_group .todo_input { padding: 0 1.2rem; min-width: 20rem; height: 2.6rem; line-height: 2.4rem; border: 1px solid #a1a1a1; }
   .todo_inner .control .form_group .todo_add { height: 2.8rem; color: #fff; background: #a1a1a1; font-size: 1rem; border: none; }
 
-
+  
   /* 모두선택, 선택삭제, TODOLIST WRAPPING */
   .todo_inner .todo_list_wrapper { margin-top: 1rem; min-width: 26.5rem; height: 30rem; box-shadow: 0rem 1rem 2rem 1rem #e0e0e0; }
 
