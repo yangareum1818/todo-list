@@ -7,6 +7,7 @@ const TODOLIST_KEY = "todolist";
 const CHECKED = "checked";
 const SHOW = "show";
 let spaceToDo = [];
+let todoli;
 
 // 로컬스토리지 안에 key값을 저장한다. ( stringify : 오브젝트를 문자형으로 변환한다. )
 const saveToDo = function () {
@@ -54,9 +55,8 @@ const todoCount = function () {
 // 전체선택 버튼 클릭 시
 const todoallChecked = function (e) {
   let allChkState = e.target.checked;
-
-  let todoli = todoListUI.querySelectorAll(".list");
   let todoinput = todoListUI.querySelectorAll(".checkbox");
+  todoli = todoListUI.querySelectorAll(".list");
 
   spaceToDo.filter((todo) => {
     allChkState === true ? (todo.checked = true) : (todo.checked = false);
@@ -78,23 +78,26 @@ const todoallChecked = function (e) {
 };
 
 // 선택한리스트 모두삭제 버튼 클릭시
-const todoReallyAllDelete = function (e) {
+const todoReallyAllDelete = function () {
   const reallydelete = confirm(
     "정말 선택한 모든 리스트들을 삭제하시겠습니까 ?"
   );
-  console.log(e.target);
 
   if (reallydelete) {
-    console.log("응 진짜 삭제");
-    let todoli = todoListUI.querySelectorAll(".list");
+    todoli = todoListUI.querySelectorAll(".list");
 
     // list중 checked가 true인 것들을 모두 삭제해준다.
     const todoSeletDelete = spaceToDo.filter((todo) =>
-      todo.checked === false ? todo.id !== parseInt(todoli.id) : ""
+      todo.checked === true ? "" : todo.id !== parseInt(todoli.id)
     );
     spaceToDo = todoSeletDelete;
 
-    todoli.remove(); // 해결하자. 화면단에서 사라져야함.
+    for (let i = 0; i < todoli.length; i++) {
+      if (todoli[i].className === "list checked") {
+        todoli[i].remove();
+      }
+      console.log(todoli[i].className);
+    }
     saveToDo();
     todoCount();
   } else {
