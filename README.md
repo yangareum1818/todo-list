@@ -282,7 +282,10 @@ const drawingTodo = function (newToDo) {
 
 ```
 <<<<<<< HEAD
+<<<<<<< HEAD
 * 
+=======
+>>>>>>> 94a45fd2814272e8c07442862d12c7255678e18a
 =======
 >>>>>>> 94a45fd2814272e8c07442862d12c7255678e18a
 * 전체선택 / 해제
@@ -294,10 +297,15 @@ totalCount === seleteCount같을 때 'allChkState'checked (true) 아니면, (fal
 * 선택된 리스트 모두 삭제
 ( 0 ) 1. confirm을 이용해 예 / 아니요(취소) 만들기
 <<<<<<< HEAD
+<<<<<<< HEAD
 ( 0 ) 1-1. ( 진행 중 )예 => 선택된 list모두 삭제
 ( 로컬스토리지 : list중 checked가 true인 것들을 id값을 비교해 모두 삭제해준다.
  화면 : for문을 이용해 className이 "list checked"인 것이면 remove()
 )
+=======
+1-1. ( 진행 중 )예 => 선택된 list모두 삭제
+( list중 checked가 true인 것들을 id값을 비교해 모두 삭제해준다. )
+>>>>>>> 94a45fd2814272e8c07442862d12c7255678e18a
 =======
 1-1. ( 진행 중 )예 => 선택된 list모두 삭제
 ( list중 checked가 true인 것들을 id값을 비교해 모두 삭제해준다. )
