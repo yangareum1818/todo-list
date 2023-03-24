@@ -7,11 +7,12 @@ const TODOLIST_KEY = "todolist";
 const CHECKED = "checked";
 const SHOW = "show";
 let spaceToDo = [];
+let todoli;
 
 // 로컬스토리지 안에 key값을 저장한다. ( stringify : 오브젝트를 문자형으로 변환한다. )
-function saveToDo() {
+const saveToDo = function () {
   localStorage.setItem(TODOLIST_KEY, JSON.stringify(spaceToDo));
-}
+};
 
 // LIST COUNT (총갯수, 선택된 갯수, "allDeleteBtn"버튼 활성 : 비활성)
 const todoCount = function () {
@@ -51,27 +52,11 @@ const todoCount = function () {
   seleteCount.append();
 };
 
-// 선택한리스트 모두삭제 버튼 클릭시
-const todoReallyAllDelete = function (e) {
-  console.log(e);
-  const reallydelete = confirm(
-    "정말 선택한 모든 리스트들을 삭제하시겠습니까 ?"
-  );
-
-  if (reallydelete) {
-    console.log("응 진짜 삭제");
-    deleteToDo(e);
-  } else {
-    console.log("아니야 삭제 안할래");
-  }
-};
-
 // 전체선택 버튼 클릭 시
 const todoallChecked = function (e) {
   let allChkState = e.target.checked;
-
-  let todoli = todoListUI.querySelectorAll(".list");
   let todoinput = todoListUI.querySelectorAll(".checkbox");
+  todoli = todoListUI.querySelectorAll(".list");
 
   spaceToDo.filter((todo) => {
     allChkState === true ? (todo.checked = true) : (todo.checked = false);
@@ -90,6 +75,34 @@ const todoallChecked = function (e) {
 
   saveToDo();
   todoCount();
+};
+
+// 선택한리스트 모두삭제 버튼 클릭시
+const todoReallyAllDelete = function () {
+  const reallydelete = confirm(
+    "정말 선택한 모든 리스트들을 삭제하시겠습니까 ?"
+  );
+
+  if (reallydelete) {
+    todoli = todoListUI.querySelectorAll(".list");
+
+    // list중 checked가 true인 것들을 모두 삭제해준다.
+    const todoSeletDelete = spaceToDo.filter((todo) =>
+      todo.checked === true ? "" : todo.id !== parseInt(todoli.id)
+    );
+    spaceToDo = todoSeletDelete;
+
+    for (let i = 0; i < todoli.length; i++) {
+      if (todoli[i].className === "list checked") {
+        todoli[i].remove();
+      }
+      console.log(todoli[i].className);
+    }
+    saveToDo();
+    todoCount();
+  } else {
+    alert("삭제를 취소했습니다.");
+  }
 };
 
 // list 갯수가 0일 경우
@@ -112,9 +125,9 @@ const listZero = function () {
 const deleteToDo = function (e) {
   const todoli = e.target.parentElement;
 
-  const todoOneDelete = spaceToDo.filter((todo) => {
-    return todo.id !== parseInt(todoli.id);
-  });
+  const todoOneDelete = spaceToDo.filter(
+    (todo) => todo.id !== parseInt(todoli.id)
+  );
   spaceToDo = todoOneDelete;
 
   todoli.remove();
