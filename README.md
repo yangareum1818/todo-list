@@ -281,7 +281,10 @@ const drawingTodo = function (newToDo) {
 투두리스트를 모두 만든 후, 메모하며 그려간 순서도를 모아서 정리했다.<br/>
 
 ```
+<<<<<<< HEAD
 * 
+=======
+>>>>>>> 94a45fd2814272e8c07442862d12c7255678e18a
 * 전체선택 / 해제
 ( O ) 1. 모두선택("allCheckedBox")클릭시 모든 list의 checked가 "true & false"
 ( 0 ) 2-1. ( 'allChkState'가 true일 때, 새로고침 시 checked상태 풀림 ) 즉, 새로고침해도 고정되어야함.
@@ -290,10 +293,15 @@ totalCount === seleteCount같을 때 'allChkState'checked (true) 아니면, (fal
 
 * 선택된 리스트 모두 삭제
 ( 0 ) 1. confirm을 이용해 예 / 아니요(취소) 만들기
+<<<<<<< HEAD
 ( 0 ) 1-1. ( 진행 중 )예 => 선택된 list모두 삭제
 ( 로컬스토리지 : list중 checked가 true인 것들을 id값을 비교해 모두 삭제해준다.
  화면 : for문을 이용해 className이 "list checked"인 것이면 remove()
 )
+=======
+1-1. ( 진행 중 )예 => 선택된 list모두 삭제
+( list중 checked가 true인 것들을 id값을 비교해 모두 삭제해준다. )
+>>>>>>> 94a45fd2814272e8c07442862d12c7255678e18a
 ( 0 ) 1-2. 아니요 => confirm창 닫기
 
 * 선택된 list는 checked된 list들끼리 밑으로 정렬되기

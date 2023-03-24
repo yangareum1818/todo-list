@@ -1,3 +1,11 @@
 {
-  "liveServer.settings.port": 5502
+  "liveServer.settings.port": 5502,
+  "markdownlint.config": {
+    "MD033": {
+      "allowed_elements": ["nobr", "sup", "br", "hr"]
+    },
+    "MD036": false,
+    "MD040": false,
+    "MD046": false
+  }
 }
