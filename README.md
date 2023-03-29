@@ -97,6 +97,21 @@ TDZ라고도 불리는 사각지대를 찾아서 공부해보고 전역변수, �
 원인은 결국 타겟이 문제인 것은 나는 알고 있다.
 
 setAttribute, getAttribute를 지금 고민 중에 있고, 이 문제를 해결하면 더이상 기능은 추가 하지 않고 마무리할 예정이고, 리펙토링을 해나아갈 생각이다.
+
+: 해결했다.
+1. 아래의 코드인데, 타겟을 전역변수의 ul 자식인 li를 querySelectorAll을 사용해서 변수 todoli를 만들었다.
+2. 그리고 for문을 돌려 조건을 걸어줬다.
+3. className이 "list checked"인 경우 remove해주게 했다.
+```
+
+```javascript
+let todoli = todoListUI.querySelectorAll(".list");
+for (let i = 0; i < todoli.length; i++) {
+  if (todoli[i].className === "list checked") {
+    todoli[i].remove();
+  }
+  console.log(todoli[i].className);
+}
 ```
 
 <br/>
