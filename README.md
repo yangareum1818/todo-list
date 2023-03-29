@@ -16,9 +16,7 @@
 
 ## 1. 코드리뷰
 
-```javascript
-
-```
+코드에 주석으로 추가하였다.
 
 ## 2. 알게된 점
 
@@ -281,38 +279,99 @@ const drawingTodo = function (newToDo) {
 투두리스트를 모두 만든 후, 메모하며 그려간 순서도를 모아서 정리했다.<br/>
 
 ```
-<<<<<<< HEAD
-<<<<<<< HEAD
-* 
-=======
->>>>>>> 94a45fd2814272e8c07442862d12c7255678e18a
-=======
->>>>>>> 94a45fd2814272e8c07442862d12c7255678e18a
-* 전체선택 / 해제
-( O ) 1. 모두선택("allCheckedBox")클릭시 모든 list의 checked가 "true & false"
-( 0 ) 2-1. ( 'allChkState'가 true일 때, 새로고침 시 checked상태 풀림 ) 즉, 새로고침해도 고정되어야함.
-totalCount === seleteCount같을 때 'allChkState'checked (true) 아니면, (false);
-( O ) 2-2. ( 'allChkState'가 true일 때, 새로고침 시 모든 list가 true됌 ) 즉, 새로고침 안한상태에서도 바뀌어야함.
+* 전역변수
+  - spaceToDo : 로컬스토리지에 값을 넣기 위해 sapceToDo라는 변수에 배열을 만든다.
+  - TODOLIST_KEY : 로컬스토리지에 저장할 키 값이다.
+  - todoli : 이벤트리스너의 타겟과 먼 거리에 있을 경우 li를 ul의 자식으로 가져오기위해 만든 변수이다.
+  - SHOW, CHECKED : css속성을 이용해 화면에 변화를 주기위해 만든 class이름이다.
 
-* 선택된 리스트 모두 삭제
-( 0 ) 1. confirm을 이용해 예 / 아니요(취소) 만들기
-<<<<<<< HEAD
-<<<<<<< HEAD
-( 0 ) 1-1. ( 진행 중 )예 => 선택된 list모두 삭제
-( 로컬스토리지 : list중 checked가 true인 것들을 id값을 비교해 모두 삭제해준다.
- 화면 : for문을 이용해 className이 "list checked"인 것이면 remove()
-)
-=======
-1-1. ( 진행 중 )예 => 선택된 list모두 삭제
-( list중 checked가 true인 것들을 id값을 비교해 모두 삭제해준다. )
->>>>>>> 94a45fd2814272e8c07442862d12c7255678e18a
-=======
-1-1. ( 진행 중 )예 => 선택된 list모두 삭제
-( list중 checked가 true인 것들을 id값을 비교해 모두 삭제해준다. )
->>>>>>> 94a45fd2814272e8c07442862d12c7255678e18a
-( 0 ) 1-2. 아니요 => confirm창 닫기
+* saveToDo() : 로컬스토리지를 생성하기 위해 만든 함수이다.
+  - localStorage.setItem함수를 이용해 로컬스토리지를 생성해준다.
+  - 첫번째인자는 key값을 두번째인자로는 들어갈 정보들 object를 넣어준다.
+  - 객체를 JSON형식의 문자열로 변환해줘야하기 때문에 JSON.stringify함수안에 sapceToDo를 넣어준다.
 
-* 선택된 list는 checked된 list들끼리 밑으로 정렬되기
-( id값을 이용해 sort함수로 정렬. checked가 true인 list, checked가 false인 list )
-* 모듈화 해보기
+* init() : 호출되는 이벤트를 한 곳에 모아둔 함수이다.
+  - 여러 곳에 흩어져서 호출되는 이벤트들을 한 곳에 모아둔다.
+  - 함수의 호출과 스택, 실행컨택스트를 생각했을 때 함수호출이 시작되는 부분이 효율적, 보기에 좋지 않다 생각되어 만들었다.
+
+* loadToDoList() : 생성한 로컬스토리지의 key값을 가져오기위한 함수이다.
+  1. JSON형식에서 다시 문자열로 변환해주기 위해 JSON.parse를 사용해 그 값을 담은 변수를 만들어준다.
+  ( 변환시켜주는 타겟은 배열안에 obj를 담은 spaceToDo이다. )
+  2. 로컬스토리지 값이 null값이 아닐 경우
+    2-1. spaceToDo에 변수의 값을 할당해준다.
+    2-2. 만든 변수(배열)를 drawingTodo함수를 반복적으로 실행시켜준다.
+
+* todoSumbitHandler() : 리스트의 내부 id, text, checked를 관리 해주는 함수
+  - 이벤트 동작을 방지하기 위해 e.preventDefault를 사용한다.
+  - 변수를 만들어 input의 value값을 가져온다.
+  - 이벤트가 실행되었을 때 input의 값이 빈값이 되도록 ""을 할당해준다.
+  - 새 object를 만들어 그 안에 정렬, 비교할 id값과 작성된 리스트를 보여줄 text값, checked로 변화를 주기 위한 checked의 기본값을 지정해준다.
+  - 로컬스토리지에 값을 넣기 위해 만든 배열안에 만든 object를 추가해준다. (spaceToDo.push(newTToDoObj))
+  - 로컬스토리지에 값을 저장하기위해 saveToDo값호출, list가 보여질 함수에 값을 전달하기위해 drawingTodo(newToDoObj)를 호출해 전달한다.
+
+
+* drawingTodo() : Input에 리스트를 작성하고 추가버튼 클릭 시 또는 Enter를 쳤을 경우 화면에 리스트가 그려지는 함수 ( ul이 addEventListner에 submit 이벤트가 발생할 경우 )
+  - ul안에 li를 추가하고, li안에 label, input, button을 생성해준다.
+  - li에는 id, input에는 type, name, class를 Attribute를 생성해준다.
+  - input에는 checked, label에는 text, button에는 "삭제"라는 글자를 추가해준다.
+  - 먼저 추가해준 리스트가 바닥에 깔리는 게 해준다. ( prepend )
+  - input의 checked가 true가 될 경우의 조건도 로컬스토리지가 아닌 현재 화면에 보이게 해준다.
+  ( li에 class를 추가해 css속성을 이용해 변화를 준다. )
+
+* todoChecked() : 리스트가 checked에 변화가 있을 경우 
+  - checked가 true일 경우
+    1. 리스트의 삭제버튼이 생긴다.
+    2. 리스트의 Text에 변화가 생긴다.
+    - input과 li의 타겟을 변수로 만들어준다.
+    - input의 checked가 true일 때 li에 class를 추가해 그에 따른 css속성을 추가한다.
+    3. 새로고침을 해도 1, 2번과 checked가 true인 상태가 고정되어야 한다.
+    ( 즉, 로컬스토리지 checked에도 변화를 줘야한다.)
+
+
+* deleteToDo() : 리스트 삭제 버튼 클릭했을 경우 
+  1. e로 타겟을 받아온다. (타겟은 버튼)
+  2. 버튼의 부모인 li를 잡은 타겟을 변수로 만들어준다.
+  3. spaceToDo의 id와 타겟의 id가 같지 않을 경우 타겟인 li를 삭제한다.
+  4. 리스트가 삭제되는 부분이기 때문에 현 상황을 동일하게 해줘야하므로 갯수를 나타내는 함수, 로컬스토리지에 저장되는 함수를 호출시킨다.
+
+* listZero() : 리스트 갯수가 0일 경우
+( 변수로 만들어 준 emptyText : 비어 있을 경우 보여 질 Text )
+  - 리스트 갯수가 0이 아닐경우
+    1. 변수인 SHOW안에 들어있는 문자열 "show"를 class에서 추가해 css속성인 display:block으로 만들어준다.
+    2. 모두선택, 해제 checkBox를 활성화로 변경해준다.
+  - 리스트 갯수가 0일 경우
+    1. 변수인 SHOW안에 들어있는 문자열 "show"를 class에서 제거해 css속성인 display:none으로 만들어준다.
+    2. 모두선택,해제 checkBox와 선택된리스트모두삭제 버튼을 비활성화로 변경해준다.
+
+* todoCount() : 총 갯수, 선택된 갯수를 나타내는 함수
+  1. 총 갯수 : spaceToDo.length | 선택된 리스트 갯수 : count ( 화면에 뿌려주기 )
+  2. 선택된 리스트 갯수는 newToDo를 담은 spaceToDo에서 checked가 true로 변경될 때 count라는 변수에 1을 증가시켜준다.
+  3. 선택된 리스트 갯수가 0일 경우, 0보다 클 경우
+  ( 선택된 리스트 모두 삭제 버튼 : allDeleteBtn이 활성화 또는 비활성화 (disabled = true || false) )
+  4. 총 갯수와 선택된 리스트 갯수가 같을 경우, 모두선택/해제인 Input의 checked가 true이고 아닐 때 false
+
+* todoallChecked() : 전체선택 / 해제 버튼을 클릭했을 경우
+  1. 모두선택("allCheckedBox")클릭시 모든 list의 checked가 "true & false"
+  2-1. ( 'allChkState'가 true일 때, 새로고침 시 checked상태 풀림 ) 즉, 새로고침해도 고정되어야함.
+  totalCount === seleteCount같을 때 'allChkState'checked (true) 아니면, (false);
+  2-2. ( 'allChkState'가 true일 때, 새로고침 시 모든 list가 true됌 ) 즉, 새로고침 안한상태에서도 바뀌어야함.
+  2-3. 선택된 리스트 갯수 변화.
+
+* todoReallyAllDelete() : 선택된 리스트 모두 삭제를 클릭했을 경우
+  1. confirm을 이용해 예 / 아니요(취소) 만들기
+  1-1. ( 진행 중 )예 => 선택된 list모두 삭제
+  ( 로컬스토리지 : list중 checked가 true인 것들을 id값을 비교해 모두 삭제해준다.
+  화면 : for문을 이용해 className이 "list checked"인 것이면 remove()
+  )
+  1-1-1. 총갯수, 선택된리스트갯수 모두 0으로 리셋
+  1-2. 아니요 => confirm창 닫기
 ```
+
+### **추가 또는 개선해야할 부분**
+
+* 선택된 리스트는 `checked`된 리스트들끼리 밑으로 정렬되기<br/>
+( `id`값을 이용해 `sort`함수로 정렬. `checked` === `true`인 리스트, `checked` === `false`인 리스트 )
+* 리팩토링
+  1. 버튼활성화,비활성화 되는 경우
+  2. 동일한 함수가 여러번 사용되는 경우 ( `filter` 사용부분 )
+* 모듈화 해보기

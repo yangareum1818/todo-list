@@ -100,6 +100,7 @@ const todoReallyAllDelete = function () {
     }
     saveToDo();
     todoCount();
+    listZero();
   } else {
     alert("삭제를 취소했습니다.");
   }
@@ -179,6 +180,7 @@ const drawingTodo = function (newToDo) {
   todoList.appendChild(deleteBtn);
   todoLabel.prepend(todoCheckBox);
 
+  // 로컬스토리지가 아닌 화면에서 checked가 true일 때 변화
   todoCheckBox.checked === true
     ? todoList.classList.add(CHECKED)
     : todoList.classList.remove(CHECKED);
